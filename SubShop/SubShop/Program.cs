@@ -7,7 +7,19 @@ namespace SubShop
         {   
             //Display.Login();
             //Display.Loading();
-            Display.Home();
+            switch(Display.Home())
+            {
+                case "New Order":
+                    break;
+                case "Past Orders":
+                    break;
+                case "Kiosk Information":
+                    break;
+                case "Logout":
+                    break;
+                default: 
+                    break;
+            }
         }
     }
 }
