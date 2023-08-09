@@ -5,8 +5,8 @@ namespace SubShop
     {
         static void Main(string[] args)
         {   
-            Display.Login();
-            Display.Loading();
+            //Display.Login();
+            //Display.Loading();
             Display.Home();
         }
     }

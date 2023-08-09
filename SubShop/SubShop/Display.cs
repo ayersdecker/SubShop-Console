@@ -10,6 +10,8 @@ namespace SubShop
 {
     class Display
     {
+        public static string Employee { get; set; }
+        public static int OrderCount { get; set; }
         public static void Login()
         {
             
@@ -46,7 +48,6 @@ namespace SubShop
             })
             .Start(ctx =>
             {
-                // Define tasks
                 var task1 = ctx.AddTask("[yellow3]Setting Up Tables[/]");
                 var task2 = ctx.AddTask("[green3]Slicing Veggies[/]");
                 var task3 = ctx.AddTask("[lightpink4]Heating Ovens[/]");
@@ -63,9 +64,24 @@ namespace SubShop
             });
             Console.Clear();
         }
-        public static void Home()
+        public static string Home()
         {
+            Employee = "Decker";
+            OrderCount = 0;
+            var table = new Table();
+            table.AddColumn("[blue]Orders Today[/]");
+            table.AddColumn("[green]Employee[/]");
+            table.AddRow($"{OrderCount}", Employee);
+            AnsiConsole.Write(table);
 
+            var selection = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .PageSize(10)
+                    .AddChoices(new[] {
+                        "New Order", "Past Orders", "Kiosk Information", "Logout"
+                    }));
+            Console.Clear();
+            return selection;
         }
     }
 }
